@@ -1,0 +1,10 @@
+        {% for filter in filter_list %}}
+        filter {{filter.id|int}}
+            default-action {{filter.default_action}}
+            {% for entry in filter.entry %}
+            entry {{entry.id|int}}
+                action {{entry.action}}
+            exit
+            {% endfor %}}
+        exit
+        {% endfor %}}

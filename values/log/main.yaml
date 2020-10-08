@@ -1,0 +1,30 @@
+log:
+  accouting:
+  file:
+  log:
+    - id: 10
+      description: blablabla
+      from:
+        - debug-trace
+        - main
+      to: file 10
+    - id: 20
+      description: blablabla2
+      from:
+        - debug-trace
+        - main
+        - change
+      to: file 30
+  snmp:
+  syslog:
+    - id: 10
+      description: Teste do Syslog
+      ipaddress: 10.1.2.3
+      level: warning
+      prefix: SYSLOG-TESTE-1
+    - id: 20
+      description: Teste do Syslog
+      ipaddress: 10.1.2.5
+      level: info
+      prefix: SYSLOG-TESTE-2
+

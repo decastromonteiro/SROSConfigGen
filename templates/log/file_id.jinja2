@@ -1,0 +1,7 @@
+        {% for file_id in log.file %}}
+        file-id {{file_id.id|int}} 
+            description "{{file_id.description|string}}"
+            location {{file_id.location|string}}
+            rollover {{file_id.rollover|int}} retention {{file_id.retention|int}}
+        exit
+        {% endfor %}}

@@ -1,0 +1,32 @@
+    system
+        name "{{node.name|string}}"
+        location "{{node.location|string }}"
+        load-balancing
+            l4-load-balancing
+            system-ip-load-balancing
+        exit
+        rollback
+            rollback-location "{{ node.rollback_location|string }}"
+        exit
+        snmp
+            streaming
+                no shutdown
+            exit
+            packet-size {{node.snmp.packet_size|int}}
+        exit
+        time
+            ntp
+                no shutdown
+            exit
+            sntp
+                shutdown
+            exit
+            {%- if node.dst_zone %}
+            dst-zone {{node.dst_zone.name|string}}
+                start {{ node.dst_zone.start_expression|string}}
+                end {{ node.dst_zone.end_expression|string}}
+            exit
+            {%- endif %}
+            zone {{node.timezone|string}} 
+        exit
+    exit

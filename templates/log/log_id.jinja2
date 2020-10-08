@@ -1,0 +1,8 @@
+        {%- for log in log.log %}
+        log-id {{log.id|int}}
+            description "{{log.description|string}}"
+            from {{log.from|join(" ")}}
+            to {{log.to}}
+            no shutdown
+        exit
+        {%- endfor %}

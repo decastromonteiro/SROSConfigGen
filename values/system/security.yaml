@@ -1,0 +1,55 @@
+security:
+  profile:
+    - name: ReadOnly
+      default_action: deny-all
+      entry:
+        - action: permit
+          matches:
+            - back
+            - exit
+            - help
+            - history
+            - logout
+            - ping
+            - traceroute
+            - monitor
+            - show
+            - admin display-config
+            - oam
+            - debug
+            - environment
+    - name: li-profile
+      default_action: deny-all
+      entry:
+        - action: permit
+          matches:
+            - admin save
+            - configure li
+            - show li
+            - info
+            - back
+            - exit
+  users:
+    - name: leonardo
+      password: leonardo
+      permissions:
+        - ftp
+        - console
+      console:
+        membership:
+          - default
+          - administrative
+    - name: NOKeduaagui
+      password: NOKeduaagui
+      permissions:
+        - console
+        - ftp
+        - snmp
+      console:
+        membership:
+          - default
+          - administrative
+  snmp:
+    community: 'ALTAN'
+
+    

@@ -1,0 +1,9 @@
+        {% for accounting in accounting_list %}}
+        accounting-policy {{accounting.id|int}} 
+            description {{accounting.description|str|quote}} 
+            record {{accounting.record|str}}
+            collection-interval {{accounting.collection_interval}}
+            to file {{accounting.file_id}}
+            no shutdown 
+        exit
+        {% endfor %}}

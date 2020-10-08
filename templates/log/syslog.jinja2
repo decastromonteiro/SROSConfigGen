@@ -1,0 +1,8 @@
+{%- for syslog in log.syslog %}
+        syslog {{syslog.id|int}}
+            description "{{syslog.description|string}}"
+            address {{syslog.ipaddress}}
+            level {{syslog.level}}
+            log-prefix "{{syslog.prefix|string}}"
+        exit
+{%- endfor %}

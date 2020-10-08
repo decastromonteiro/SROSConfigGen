@@ -1,0 +1,8 @@
+        {% for snmp in log.snmp %}}
+        snmp-trap-group {{snmp.id|int}}
+            description "{{snmp.description|string}}"
+            {% for target in snmp.target %}}
+            trap-target {{target.name}} address {{target.address}} {{target.version}} notify-community {{target.community}}
+            {% endfor %}}
+        exit 
+        {% endfor %}}

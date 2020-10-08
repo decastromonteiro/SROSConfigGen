@@ -1,0 +1,14 @@
+cards:
+  - type: iom-v
+    count: 2
+    mda:
+      - m20-v
+      - isa-ip-reas-v
+  - type: iom-mg-v
+    count: 15
+    mda:
+      - isa-mg-v
+      - isa-aa-v
+      - m20-v
+      - isa-bb-v
+

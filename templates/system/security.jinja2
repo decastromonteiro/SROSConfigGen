@@ -1,0 +1,69 @@
+    system
+        security
+            ftp-server
+            {%- for profile in security.profile %}
+            profile "{{ profile.name }}"
+                default-action {{profile.default_action}}
+            {%- for entry in profile.entry %}
+            {%- for match in entry.matches %}
+                entry {{ loop.index * 10 }}
+                    match "{{match}}"
+                    action {{entry.action}}
+                exit
+            {%- endfor %}
+            {%- endfor %}
+            {%- endfor %}
+            tech-support
+                ts-location "{{node.ts_location}}"
+            exit
+            {%- for user in security.users %}
+            user "{{user.name}}"
+                password "{{user.password}}"
+                access {{user.permissions|sort|join(" ")}}
+                console
+                {%- for membership in user.console.membership %}
+                    member "{{membership}}"
+                {%- endfor %}
+                exit
+            exit
+            {%- endfor %}
+            snmp
+                community "{{security.snmp.community}}" rwa version both
+            exit
+            ssh
+                client-cipher-list protocol-version 2
+                    no cipher 190
+                    no cipher 192
+                    no cipher 194
+                    no cipher 205
+                    no cipher 210
+                    no cipher 215
+                    no cipher 220
+                    no cipher 225
+                    no cipher 230
+                    no cipher 235
+                    cipher 200 name aes128-cbc
+                exit
+                server-cipher-list protocol-version 2
+                    no cipher 190
+                    no cipher 192
+                    no cipher 194
+                    no cipher 205
+                    no cipher 210
+                    no cipher 215
+                    no cipher 220
+                    no cipher 225
+                    no cipher 230
+                    no cipher 235
+                    cipher 200 name aes128-cbc
+                exit
+                preserve-key
+            exit
+            dist-cpu-protection
+                policy "_default-access-policy" create
+                exit
+                policy "_default-network-policy" create
+                exit
+            exit
+        exit
+    exit

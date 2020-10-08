@@ -1,0 +1,17 @@
+    {% set slotId = namespace(value=1) -%}
+    {% for card in cards -%}
+    {% for i in range(card.count) -%}
+    card {{slotId.value}}
+        card-type {{card.type}}
+        {% for mda in card.mda -%}
+        mda {{loop.index}}
+            mda-type {{mda}}
+            no shutdown
+        exit
+        {% endfor -%}
+        no shutdown
+    exit
+    {% set slotId.value = slotId.value + 1 -%}
+    {% endfor -%}
+    {% endfor -%}
+

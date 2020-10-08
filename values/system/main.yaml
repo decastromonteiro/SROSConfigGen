@@ -1,0 +1,14 @@
+node:
+  name: "1400000-SAE01U-TULTITLAN"
+  location: "TULTITLAN-MEXICO"
+  rollback_location: "cf3:rollback"
+  snmp:
+    packet_size: 9212
+  dst_zone:
+    name: BRT
+    start_expression: first sunday october 02:00
+    end_expression: first sunday january 02:00
+  timezone: BRT
+  ts_location: "cf1:TS/"
+
+  
